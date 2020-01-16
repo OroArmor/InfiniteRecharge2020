@@ -7,12 +7,16 @@ import com.robototes.sensors.Limelight;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.team2412.robot.Subsystems.constants.LimelightConstants;
+import io.github.oblarg.oblog.annotations.Log;
 
 public class LimelightSubsystem extends SubsystemBase {
 
 	// Store local values of distance and yaw so they aren't calculated multiple
 	// times a loop
+	@Log(name = "m_distanceToTarget")
 	public Distance m_distanceToTarget;
+
+	@Log(name = "m_yawFromTarget")
 	public Rotations m_yawFromTarget;
 
 	// Store the limelight

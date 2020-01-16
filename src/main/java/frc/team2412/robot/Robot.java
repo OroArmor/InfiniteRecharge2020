@@ -8,6 +8,7 @@
 package frc.team2412.robot;
 
 import edu.wpi.first.wpilibj.TimedRobot;
+import io.github.oblarg.oblog.Logger;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -46,7 +47,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-
+		Logger.configureLoggingAndConfig(this, false);
 	}
 
 	/**
@@ -60,6 +61,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotPeriodic() {
+		Logger.updateEntries();
 	}
 
 	/**
