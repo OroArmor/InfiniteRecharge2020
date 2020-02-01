@@ -3,6 +3,8 @@ package frc.team2412.robot.Subsystems;
 import com.revrobotics.CANSparkMax;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.PWMSparkMax;
+import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.team2412.robot.Subsystems.constants.IndexerConstants.IndexerDirection;
@@ -11,7 +13,8 @@ import io.github.oblarg.oblog.annotations.Log;
 
 public class IndexerSubsystem extends SubsystemBase implements Loggable {
 	@Log
-	public CANSparkMax m_indexBackMotor, m_indexFrontMotor, m_indexMidMotor;
+	public PWMSparkMax m_indexBackMotor, m_indexFrontMotor;
+	public Spark m_indexMidMotor;
 	public SpeedControllerGroup m_indexMotors, m_indexSideMotors;
 	public DigitalInput m_back, m_backMid, m_mid, m_frontMid, m_front, m_intakeFront, m_intakeBack;
 
@@ -22,7 +25,7 @@ public class IndexerSubsystem extends SubsystemBase implements Loggable {
 	// SIDE OF INDEXER WITH LESS BALLS
 	private IndexerDirection m_ballUnbalancedSide;
 
-	public IndexerSubsystem(CANSparkMax frontm, CANSparkMax middle, CANSparkMax backm, DigitalInput f, DigitalInput fm,
+	public IndexerSubsystem(PWMSparkMax frontm, Spark middle, PWMSparkMax backm, DigitalInput f, DigitalInput fm,
 			DigitalInput m, DigitalInput bm, DigitalInput b, DigitalInput inf, DigitalInput inb) {
 		// Motors
 		m_indexBackMotor = backm;
