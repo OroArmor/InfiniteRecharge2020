@@ -42,33 +42,34 @@ public class LimelightSubsystem extends SubsystemBase implements Loggable {
 		this.setDefaultCommand(new LimelightReadCommand(this));
 	}
 
-	public void accurateAim() {
-		if (m_limelight.hasValidTarget()) {
-			setDistanceFromTable();
-			setYawFromTable();
-
-			// Complex equation that wont be explained here because it is really confusing
-			double skewOfTarget = m_limelight.getNetworkTable().getEntry("ts").getDouble(0);
-
-			double cosOfSkew = Math
-					.cos(new Rotations(180 - skewOfTarget, RotationUnits.DEGREE).convertTo(RotationUnits.RADIAN));
-
-			double angleFromYawToInner = Math.acos(
-					(m_distanceToTarget.getValue() - LimelightConstants.INNER_TARGET_DISTANCE.getValue() * cosOfSkew)
-							/ Math.sqrt(Math.pow(m_distanceToTarget.getValue(), 2)
-									+ Math.pow(LimelightConstants.INNER_TARGET_DISTANCE.getValue(), 2)
-									- 2 * m_distanceToTarget.getValue()
-											* LimelightConstants.INNER_TARGET_DISTANCE.getValue() * cosOfSkew));
-
-			m_yawFromTarget = m_yawFromTarget.add(new Rotations(angleFromYawToInner, RotationUnits.RADIAN));
-		}
-	}
+	/*
+	 * public void accurateAim() { if (m_limelight.hasValidTarget()) {
+	 * setDistanceFromTable(); setYawFromTable();
+	 * 
+	 * // Complex equation that wont be explained here because it is really
+	 * confusing double skewOfTarget =
+	 * m_limelight.getNetworkTable().getEntry("ts").getDouble(0);
+	 * 
+	 * double cosOfSkew = Math .cos(new Rotations(180 - skewOfTarget,
+	 * RotationUnits.DEGREE).convertTo(RotationUnits.RADIAN));
+	 * 
+	 * double angleFromYawToInner = Math.acos( (m_distanceToTarget.getValue() -
+	 * LimelightConstants.INNER_TARGET_DISTANCE.getValue() * cosOfSkew) /
+	 * Math.sqrt(Math.pow(m_distanceToTarget.getValue(), 2) +
+	 * Math.pow(LimelightConstants.INNER_TARGET_DISTANCE.getValue(), 2) - 2 *
+	 * m_distanceToTarget.getValue()
+	 * LimelightConstants.INNER_TARGET_DISTANCE.getValue() * cosOfSkew));
+	 * 
+	 * m_yawFromTarget = m_yawFromTarget.add(new Rotations(angleFromYawToInner,
+	 * RotationUnits.RADIAN)); } }
+	 */
 
 	public Distance getDistanceToTarget() {
 		return m_distanceToTarget;
 	}
 
 	public void getValues() {
+
 		// If we have a target, set distance and yaw, otherwise error them
 		if (m_limelight.hasValidTarget()) {
 			setDistanceFromTable();
@@ -82,7 +83,6 @@ public class LimelightSubsystem extends SubsystemBase implements Loggable {
 
 	@Override
 	public void periodic() {
-
 	}
 
 	public void setDistanceFromTable() {

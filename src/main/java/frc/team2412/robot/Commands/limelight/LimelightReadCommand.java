@@ -21,6 +21,7 @@ public class LimelightReadCommand extends CommandBase {
 	@Override
 	public void execute() {
 		m_LimelightSubsystem.getValues();
+		System.out.println(m_LimelightSubsystem.getYawFromTarget());
 	}
 
 	@Override
