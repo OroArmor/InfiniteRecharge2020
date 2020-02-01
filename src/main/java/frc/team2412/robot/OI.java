@@ -3,20 +3,7 @@ package frc.team2412.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.team2412.robot.Commands.ExampleCommand;
-import frc.team2412.robot.Commands.ControlPanelCommands.RotateControlPanelCommand;
-import frc.team2412.robot.Commands.ControlPanelCommands.SetToTargetColorCommand;
 import frc.team2412.robot.Commands.IndexerCommands.ProcessBallsCommandGroup;
-import frc.team2412.robot.Commands.IntakeCommands.IntakeBackOffCommand;
-import frc.team2412.robot.Commands.IntakeCommands.IntakeBackOnCommand;
-import frc.team2412.robot.Commands.IntakeCommands.IntakeDownCommand;
-import frc.team2412.robot.Commands.IntakeCommands.IntakeFrontOffCommand;
-import frc.team2412.robot.Commands.IntakeCommands.IntakeFrontOffIntakeBackOnCommand;
-import frc.team2412.robot.Commands.IntakeCommands.IntakeFrontOnCommand;
-import frc.team2412.robot.Commands.IntakeCommands.IntakeFrontOnIntakeBackOffCommand;
-import frc.team2412.robot.Commands.IntakeCommands.IntakeUpCommand;
-import frc.team2412.robot.Commands.LiftCommands.LiftDownCommand;
-import frc.team2412.robot.Commands.LiftCommands.LiftUpCommand;
 
 //This is the class in charge of all the buttons and joysticks that the drivers will use to control the robot
 public class OI {
@@ -81,37 +68,5 @@ public class OI {
 		// robot container's instance of example subsystem
 		indexerStopButton
 				.toggleWhenPressed(new ProcessBallsCommandGroup(robotContainer.m_IndexerSubsystem, indexerShootButton));
-
-		exampleSubsystemMethod.whenPressed(new ExampleCommand(robotContainer.m_ExampleSubsystem));
-
-		// LIFT
-		liftUpButton.whenPressed(new LiftUpCommand(robotContainer.m_liftSubsystem));
-		liftDownButton.whenPressed(new LiftDownCommand(robotContainer.m_liftSubsystem));
-
-		// INTAKE UpDown
-		intakeUpButton.whenPressed(new IntakeUpCommand(robotContainer.m_intakeUpDownSubsystem));
-		intakeDownButton.whenPressed(new IntakeDownCommand(robotContainer.m_intakeUpDownSubsystem));
-
-		// INTAKE front
-		intakeFrontOnButton.whenPressed(new IntakeFrontOnCommand(robotContainer.m_intakeMotorOnOffSubsystem));
-		intakeFrontOffButton.whenPressed(new IntakeFrontOffCommand(robotContainer.m_intakeMotorOnOffSubsystem));
-
-		// INTAKE back
-		intakeBackOnButton.whenPressed(new IntakeBackOnCommand(robotContainer.m_intakeMotorOnOffSubsystem));
-		intakeBackOffButton.whenPressed(new IntakeBackOffCommand(robotContainer.m_intakeMotorOnOffSubsystem));
-
-		// INTAKE group on/off
-		intakeFrontOnBackOffButton
-				.whenPressed(new IntakeFrontOnIntakeBackOffCommand(robotContainer.m_intakeMotorOnOffSubsystem));
-		intakeFrontOffBackOnButton
-				.whenPressed(new IntakeFrontOffIntakeBackOnCommand(robotContainer.m_intakeMotorOnOffSubsystem));
-
-		// CONTROL PANEL
-		controlPanelSpinThreeTimesButton
-				.whenPressed(new RotateControlPanelCommand(robotContainer.m_controlPanelColorSubsystem));
-		controlPanelSetToTargetButton
-				.whenPressed(new SetToTargetColorCommand(robotContainer.m_controlPanelColorSubsystem));
-
-		exampleSubsystemMethod.whenPressed(new ExampleCommand(robotContainer.m_ExampleSubsystem));
 	}
 }

@@ -31,7 +31,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void robotInit() {
-		m_robotContainer.m_TurretSubsystem.initTurretEncoder();
 		Logger.configureLoggingAndConfig(this, false);
 	}
 
